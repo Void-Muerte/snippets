@@ -9,15 +9,29 @@ interface SnippetPropType {
 }
 export default function SnippetEditForm({ snippet }: SnippetPropType) {
   const [code, setCode] = useState(snippet.code);
+  const [title, setTitle] = useState(snippet.title);
   const handleEditorChange = (value: string = "") => {
     setCode(value);
   };
 
-  const editSnippetActions = actions.editSnippet.bind(null, snippet.id, code);
+  const editSnippetActions = actions.editSnippet.bind(
+    null,
+    snippet.id,
+    code,
+    title
+  );
 
   return (
     <div>
-      <div className="flex flex-col items-end gap-2 py-4">
+      <div className="flex flex-col items-end gap-2 py-4 min-w-[670px]">
+        <div className="flex justify-start w-full">
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="border  rounded focus:outline-blue-300 py-1 px-2"
+          />
+        </div>
         <Editor
           height="40vh"
           theme="vs-dark"

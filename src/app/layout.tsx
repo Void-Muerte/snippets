@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <div className="mx-auto container px-12 py-4">
+          <Link href="/" className="text-2xl p-2 font-light">
+            Home
+          </Link>
+        </div>
         <div className="mx-auto container px-12">{children}</div>
       </body>
     </html>
